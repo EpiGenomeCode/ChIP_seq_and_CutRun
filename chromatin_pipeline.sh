@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# File: chromatin_pipeline.sh
-#
-# Author: Richard Koche (kocher@mskcc.org)
-# Contributors: Vince Reuter (reuterv1@mskcc.org)
-#
 # Pipeline for a single ChIP- or ATAC-seq sample, single- or paired-end.
 #
 # Usage: /path/to/this/script <assay> <readtype> <genome> <read1> <read2>
@@ -12,7 +7,7 @@
 # Arguments
 #     1. assay -- the name of the experiment type ('ATAC' or 'ChIP')
 #     2. readtype -- indication of sequencing protocol type ('PE' for paired-end, 'SE' for single-end)
-#     3. genome -- name of the genomic assembly ('mm9' or 'hg19')
+#     3. genome -- name of the genomic assembly ('mm10' or 'hg19')
 #     4. read1 -- path to read1 file
 #     5. read2 -- path to read2 file (can use arbitrary dummy value for single-end as this is ignored then)
 #     6. Output directory
