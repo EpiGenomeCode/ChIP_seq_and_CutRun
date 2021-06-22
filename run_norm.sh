@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# Modified from MSKCC CER
 # File: run_norm.sh
 #
 # Usage: run_norm.sh <readsfile> <assay> <genome> <scale-factor>
