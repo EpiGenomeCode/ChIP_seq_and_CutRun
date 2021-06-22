@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# Yingqian Zhan
-# Oct 8, 2019
-# CER, MSKCC
+# Modified from MSKCC CER
 # This script will run peak calling with Matched input/control(s).
 # Usage: run_MACS2_pkcalling_wMatchedInput.sh --File <File> --genome <genome> --prjDir <output dir>
 #
