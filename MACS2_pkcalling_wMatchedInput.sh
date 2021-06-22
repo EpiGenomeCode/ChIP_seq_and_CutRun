@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Yingqian Zhan
-# Jun 19, 2019
-# CER, MSKCC
 
 usage()
 {
