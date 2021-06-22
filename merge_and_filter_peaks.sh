@@ -1,4 +1,6 @@
 #!/bin/bash
+
+# Modified from MSKCC CER
 # File: merge_and_filter_peaks.sh
 #
 # Usage:
