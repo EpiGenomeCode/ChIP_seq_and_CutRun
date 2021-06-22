@@ -1,0 +1,29 @@
+#!/bin/bash
+for name in yoursample
+
+do
+{
+trim_galore -q 20 --paired ${name}_S*_R1_001.fastq.gz ${name}_S*_R2_001.fastq.gz --gzip
+
+bowtie2 -p 48 --local --very-sensitive-local --no-unal --no-mixed --no-discordant  -k 10 -X 700 -x ~/genome/bt_index/mm10_index/mm10 -1 ${name}_*_R1_001_val_1.fq.gz  -2  ${name}_*_R2_001_val_2.fq.gz|  samtools sort  -@ 12 -O bam -o - > ${name}_bt2.bam 
+
+samtools index -@ 12 ${name}_bt2.bam
+
+samtools flagstat -@ 12 ${name}_bt2.bam > ${name}.bam.flagstat.log
+
+bamCoverage -p 12  --ignoreDuplicates --normalizeUsing RPKM --binSize 5 -b  ${name}_bt2.bam -o ${name}.bw 
+
+sambamba markdup -t 8  -r  ${name}_bt2.bam  ${name}_bt2.rmdup.bam 
+
+samtools view -@ 8 -h ${name}_bt2.rmdup.bam | grep  -v  chrM | samtools sort  -@ 8 -O bam -o - > ${name}.bam
+
+samtools index -@ 8 ${name}.bam
+
+samtools flagstat -@ 8 ${name}.bam > ${name}.flagstat.log
+
+bamCoverage -p 8   --ignoreDuplicates --normalizeUsing RPGC  --effectiveGenomeSize 2407883318 --centerReads  -b  ${name}.bam -o ${name}.RPGC.bw 
+
+bamCoverage -p 8  --ignoreDuplicates --normalizeUsing RPKM -b  ${name}.bam -o ${name}2.bw 
+
+} &
+done
