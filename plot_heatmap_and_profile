@@ -1,0 +1,9 @@
+
+# Plot for ChIP-seq or Cut&Run data at peak center
+~~~
+computeMatrix reference-point -p 48 --referencePoint center -b 2000 -a 2000 -S  ${yoursample}.bw --sortUsing mean -R  ${yourpeak}.bed   --blackListFileName ~/mm10.blacklist.final.bed   --missingDataAsZero  -o ${youroutput}.matrix.gz 
+
+plotHeatmap -m ${youroutput}.matrix.gz   --colorMap  'Purples'  --zMax 50  -out ${youroutput}.matrix.pdf 
+
+plotProfile -m   ${youroutput}.matrix.gz     -out   ${youroutput}.matrix.plotProfile.pdf  --perGroup   --yMax 40
+~~~
