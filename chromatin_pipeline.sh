@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Modified from MSKCC CER
 # Pipeline for a single ChIP- or ATAC-seq sample, single- or paired-end.
 #
 # Usage: /path/to/this/script <assay> <readtype> <genome> <read1> <read2>
